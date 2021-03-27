@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Bus.DomainModels.Models.BusDetails>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"><i class="fa fa-bus" aria-hidden="true"></i>Home page</h1>
+<body style="
+    background-image:url('/images/pattern.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center">
+
+</body>
+
+<div class="text-center">
+    <div class="text-center">
+
+        <a asp-controller="Travel" class="btn btn-info text-white"><i class="fa fa-bus"></i>Bus</a>
+        <a asp-controller="Routes" class="btn btn-info text-white"><i class="fa fa-road"></i>Route</a>
+        <a asp-controller="Schedule" class="btn btn-info text-white"><i class="fas fa-calendar-alt"></i>Schedule</a>
+
+    </div>
+    <br />
+    <br />
+    <br />
+
+   
+
+    @*<h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+<div >
+    <form method="get" asp-action="Index" asp-controller="Travel">
+        <p>
+            <input type="search" placeholder="Enter BusName" value="@ViewBag.Search" name="search" @*style="width:500px"*@ />
+            @*<input type="submit" value="Search" class="btn btn-primary" />*@
+            @*<button type="submit"><i class="fa fa-search btn btn-primary"></i></button>*@
+            <a asp-action="Index" asp-controller="Travel" asp-route-search="" class="btn btn-info text-white"><i class="fa fa-search"></i>Search</a>
+
+            <a asp-action="Index" class="btn btn-outline-secondary">All</a>
+        </p>
+
+    </form>
+    <table class="table ">
+        <tr>
+            @*<th>BusId</th>*@
+            <th>Bus Name</th>
+            <th>Category</th>
+            <th>Capacity</th>
+            <th>
+                <a asp-action="Create" asp-controller="Travel" class="btn btn-success text-white"><i class="fas fa-angle-double-right"></i>Add New Bus</a>
+            </th>
+        </tr>
+        @foreach (var busdata in Model)
+        {
+            <tr>
+                @*<td>B @busdata.BusId</td>*@
+                <td><a asp-action="Details" asp-controller="Travel" asp-route-id="@busdata.BusId">@busdata.BusName</a></td>
+
+                @*<td>@busdata.BusName</td>*@
+                <td>@busdata.Category</td>
+                <td>@busdata.Capacity</td>
+
+                <td><a asp-action="Edit" asp-controller="Travel" asp-route-id="@busdata.BusId" class="btn btn-info text-white"><i class="fa fa-pencil-alt"></i></a>
+                <a asp-action="DeleteBus" asp-controller="Travel" asp-route-id="@busdata.BusId" class="btn btn-danger text-white"><i class="fa fa-trash"></i></a></td>
+
+            </tr>
+        }
+        @*@Paging@*@
+        <tr>
+            <td colspan="9">
+                @{ int prevPageNo = ViewBag.PageNo - 1;
+                    if (prevPageNo <= 0)
+                    {
+                        prevPageNo = 1;
+                    }
+                    int nextPageNo = ViewBag.PageNo + 1;
+                    if (nextPageNo > ViewBag.NoOfPages)
+                    {
+                        nextPageNo = ViewBag.NoOfPages;
+                    } }
+                <ul class="pagination justify-content-end">
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        if (i + 1 == ViewBag.PageNo)
+                        {
+                            <li class="page-item active">
+                                <a class="page-link" href="/Travel/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="/Travel/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+</div>

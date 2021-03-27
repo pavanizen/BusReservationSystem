@@ -1,0 +1,43 @@
+﻿@model Bus.DomainModels.Models.BusDetails
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<body style="
+    background-image:url('/images/pattern.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center">
+
+</body>
+
+@if (Model != null)
+{
+<table class="table">
+    <tr>
+        <td>BusId</td>
+        <td>B @Model.BusId</td>
+    </tr>
+    <tr>
+        <td>BusName</td>
+        <td>@Model.BusName</td>
+    </tr>
+    <tr>
+        <td>Capacity</td>
+        <td>@Model.Capacity</td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td>@Model.Category</td>
+    </tr>
+</table>
+}
+else
+{
+    <h5>@ViewBag.StatusCode</h5>
+}
+<div>
+    <a class="btn btn-info" asp-action="Index" asp-controller="Travel">Back to the list</a>
+</div>

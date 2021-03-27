@@ -1,0 +1,47 @@
+﻿@model Bus.DomainModels.Models.Trip
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<body style="
+    background-image:url('/images/pattern.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center">
+
+</body>
+<form class="horizontal" asp-action="Edit" method="post">
+    @*<div class="form-group">
+            <label asp-for="TripID">TripID</label>
+            <input asp-for="TripID" value="@Model.TripID" />
+        </div>*@
+    <div class="form-group col-md-3">
+        <label asp-for="RouteID">RouteID</label>
+        <input asp-for="RouteID" value="@Model.RouteID" class="form-control input-md" />
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="RouteID">RouteID</label>
+        <input asp-for="RouteID" value="@Model.RouteID" class="form-control input-md"/>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="BusID">BusID</label>
+        <input asp-for="BusID" value="@Model.BusID" class="form-control input-md"/>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="JourneyDate">JourneyDate</label>
+        <input asp-for="JourneyDate" value="@Model.JourneyDate" class="form-control input-md"/>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="AvailableSeats">AvailableSeats</label>
+        <input asp-for="AvailableSeats" value="@Model.AvailableSeats" class="form-control input-md"/>
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary" value="Edit" />
+    
+        <a class="btn btn-info" asp-action="Index" asp-controller="Trip">Cancel</a>
+    </div>
+
+</form>

@@ -1,0 +1,442 @@
+﻿@model Bus.DomainModels.Models.Trip
+@{ ViewData["Title"] = "ViewSeats"; }
+
+<body style="
+background-image:url('/Photos/pattern.jpg');
+background-size:cover;
+background-repeat:repeat;
+background-position:center center">
+</body>
+<style>
+    .h1 {
+        width: 60%;
+        margin: 100px auto 35px auto;
+    }
+
+    .fuselage {
+        border-right: 5px solid #d8d8d8;
+        border-left: 5px solid #d8d8d8;
+    }
+
+    ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .seats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .seat {
+        display: flex;
+        flex: 0 0 14.28571428571429%;
+        padding: 5px;
+        position: relative;
+        margin-right: 14.28571428571429%;
+        margin-left: 30px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+    }
+
+        input[type="checkbox"]:before {
+            color: blue;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: red;
+        }
+</style>
+<br />
+<div class="float-left" style="border:1px solid black;margin-left:70px;width:300px">
+    <form id="devel-generate-content-form">
+
+        <h3 class="text-center" style=" margin-top: 10px;">Please select a seat</h3>
+
+        <ol class="cabin fuselage">
+            <li>
+                <input type="image" src="~/Photos/WhatsApp Image 2021-03-12 at 9.03.12 AM.jpeg" style="width: 30px;height: 30px;margin-left: 218px;margin-bottom: 10px;margin-top: 10px;" />
+            </li>
+            <li class="row row--1">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="1A" value="@Model.Route.Price" name="arrange" onClick="test(this);" class="limitThree" />
+                        <label for="1A">1A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="1B" value="@Model.Route.Price" name="arrange" onClick="test(this);" class="limitThree" />
+                        <label for="1B">1B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="1C" value="@Model.Route.Price" name="arrange" onClick="test(this);" class="limitThree" />
+                        <label for="1C">1C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--2">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" disabled id="2A" />
+                        <label for="2A">Booked</label>
+                    </li>
+                    <li class="seat" style="margin-left:12px">
+                        <input type="checkbox" id="2B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="2B">2B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="2C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="2C">2C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--3">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="3A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="3A">3A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="3B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="3B">3B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="3C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="3C">3C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--4">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="4A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="4A">4A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" disabled id="4B" />
+                        <label for="4B">Booked</label>
+                    </li>
+                    <li class="seat" style="margin-left:-34px">
+                        <input type="checkbox" id="4C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="4C">4C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--5">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="5A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="5A">5A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="5B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="5B">5B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" disabled id="5C" />
+                        <label for="5C">Booked</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--6">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="6A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="6A">6A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="6B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="6B">6B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="6C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="6C">6C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--7">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="7A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="7A">7A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" disabled id="7B" />
+                        <label for="7B">Booked</label>
+                    </li>
+                    <li class="seat" style="margin-left:-34px">
+                        <input type="checkbox" id="7C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="7C">7C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--8">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="8A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="8A">8A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="8B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="8B">8B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="8C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="8C">8C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--9">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="9A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="9A">9A</label>
+                    </li>
+                    <li class="seat" style="margin-left:45px">
+                        <input type="checkbox" id="9B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="9B">9B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-1px">
+                        <input type="checkbox" id="9C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="9C">9C</label>
+                    </li>
+                </ol>
+            </li>
+            <li class="row row--10">
+                <ol class="seats" type="A">
+                    <li class="seat" style="margin-left:30px">
+                        <input type="checkbox" id="10A" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="10A">10A</label>
+                    </li>
+                    <li class="seat" style="margin-left:34px">
+                        <input type="checkbox" id="10B" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="10B">10B</label>
+                    </li>
+                    <li class="seat" style="margin-left:-9px">
+                        <input type="checkbox" id="10C" value="@Model.Route.Price" onClick="test(this);" class="limitThree" />
+                        <label for="10C">10C</label>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <br />
+        <div class="exit exit--back fuselage">
+            <div class="count-checkboxes-wrapper">
+                <span id="count-checked-checkboxes" style="margin-left:70px">0</span> seats selected
+            </div>
+            <div class="btn btn-info" style="margin-left:70px">
+                Total Amount : <span id="Totalcost"></span>
+            </div>
+        </div>
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+    <button id="myBtn" class="btn btn-success" style="margin-left:350px;">Proceed to Pay>></button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-content" style="padding-left:20px;">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 style="margin-left:350px">Transaction Details</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="cname">Name on Card</label>
+                        <input type="text" id="cname" name="cardname" placeholder="Shirisha G" class="form-control"><br />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="ccnum">Credit card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="4263-9826-4026-9299" class="form-control"><br />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September" class="form-control"><br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="expyear">Exp Year</label>
+                        <input type="text" id="expyear" name="expyear" placeholder="2022" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="256" class="form-control">
+                    </div>
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <a href="/Customer/CheckOutComplete" type="button" class="btn btn-success" style="margin-right:500px">Confirm </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var $checkboxes = $('#devel-generate-content-form input[type="checkbox"]');
+
+            $checkboxes.change(function () {
+                var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+                $('#count-checked-checkboxes').text(countCheckedCheckboxes);
+
+            });
+        });
+
+        //To print total
+        var total = 0;
+        function test(item) {
+            if (item.checked) {
+                total += parseInt(item.value);
+            } else {
+                total -= parseInt(item.value);
+            }
+            //alert(total);
+            document.getElementById('Totalcost').innerHTML = total + " /-";
+        }
+
+        //Limit to FOUR
+        $('.limitThree').on('change', function () {
+            var noChecked = 0;
+            $.each($('.limitThree'), function () {
+                if ($(this).is(':checked')) {
+                    noChecked++;
+                }
+            });
+            if (noChecked >= 4) {
+                $.each($('.limitThree'), function () {
+                    if ($(this).not(':checked').length == 1) {
+                        $(this).attr('disabled', 'disabled');
+                    }
+                });
+            } else {
+                $('.limitThree').removeAttr('disabled');
+            };
+        });
+
+        $(document).ready(function () {
+
+            $('#myform').validate({
+                rules: {
+                    'arrange': {
+                        required: true
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.closest('div'));
+                },
+                submitHandler: function (form) { // for demo
+                    alert('valid form');
+                    return false;
+                }
+            });
+        });
+
+        //Tick at least one checkbox
+        (function () {
+            const form = document.querySelector('#devel-generate-content-form');
+            const checkboxes = form.querySelectorAll('input[type=checkbox]');
+            const checkboxLength = checkboxes.length;
+            const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+            function init() {
+                if (firstCheckbox) {
+                    for (let i = 0; i < checkboxLength; i++) {
+                        checkboxes[i].addEventListener('change', checkValidity);
+                    }
+
+                    checkValidity();
+                }
+            }
+            function isChecked() {
+                for (let i = 0; i < checkboxLength; i++) {
+                    if (checkboxes[i].checked) return true;
+                }
+                return false;
+            }
+            function checkValidity() {
+                const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+                firstCheckbox.setCustomValidity(errorMessage);
+            }
+            init();
+        })();
+
+        //Modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+</div>
+
+<div style="border: 1px solid black;float:right;  margin-left: 70px;width: 300px;margin-right: 80px; margin-top:-580px">
+    <div style="margin-right: -100px;">
+        <h3 class="text-center" style=" margin-right: 90px; margin-bottom: 20px; margin-top: 10px;"><i class="fa fa-shopping-bag"></i> Order Details</h3>
+        <div class="form-group col-md-9">
+            @Html.Label("Email")
+            <input type="text" name="Email" value="@ViewBag.UserName" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("Bus Name")
+            <input type="text" value="@Model.BusDetails.BusName" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("From Location")
+            <input type="text" value="@Model.Route.FromLocation" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("To Location")
+            <input type="text" value="@Model.Route.ToLocation" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("Journey Date")
+            <input type="text" value="@Model.JourneyDate" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9" style="margin-left:80px">
+            <input type="submit" class="btn btn-primary" value="Payment" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*<body style="
+        background-image:url('/images/bus.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center center">
+
+
+
+    </body>*@
+
+
+
+
+
+
+
+<style>
+
+
+
+    #landingPage {
+        background-image: url('https://wallpaperaccess.com/full/1628621.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .home-text {
+        position: absolute;
+        padding-left: 40px;
+        padding-top: 37px;
+        padding-bottom: 40px;
+        padding-right: 20px;
+        background: rgba(255,255,255,0.6);
+        box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+        margin-top: 20%;
+        margin-left: 10%;
+        margin-right: 10%;
+        font-weight: 400;
+    }
+
+
+
+        .home-text h2 {
+            color: black;
+            font-size: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: Centaur;
+        }
+
+
+
+        .home-text a {
+            margin-left: 50%;
+            transform: translate(-50%);
+            color: white;
+            background: darkblue;
+            font-size: 2em;
+            padding: 10px 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+
+
+            .home-text a:hover {
+                background-color: darkgreen;
+            }
+</style>
+
+
+
+
+<body id="landingPage">
+    <div class="home-area">
+        <div class="home-container">
+            <div class="col-md-12 col-lg-offset-4">
+                <div class="home-text">
+                    <h2>Welcome to Bus System</h2>
+
+                    @*@Html.ActionLink("Get Started", "Index", new { @class = "btn btn-primary", controller = "Travel" })*@
+                    @Html.ActionLink("Get Started", "Index", new { @class = "btn btn-primary", controller = "Customer" })
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

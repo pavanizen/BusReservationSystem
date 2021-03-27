@@ -1,0 +1,471 @@
+﻿
+@model Bus.DomainModels.Models.BookedSeats
+@{
+    ViewData["Title"] = "BookedSeatsData";
+}
+
+<body style="
+    background-image: url('https://tse1.mm.bing.net/th?id=OIP.34MY20FWjl7BI2jBUtnk2AHaFj&pid=Api&P=0&w=227&h=171');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;">
+</body>
+
+<style>
+    input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+    }
+
+        input[type="checkbox"]:checked {
+            background-color: red;
+        }
+
+    label {
+        margin-bottom: 10px;
+        font-weight:bold;
+    }
+</style>
+<div>
+    <div style="border:1px solid black;margin-left:70px;width:300px;float:left;height:545px">
+        <form action="~/Customer/Book" method="post">
+            
+                    <h3 class="text-center" style=" margin-top: 10px;">Please select a seat</h3>
+               
+            <input type="image" src="~/images/wheel.jpg" style="width: 30px;height: 30px;margin-left: 218px;margin-bottom: 10px;margin-top: 10px;" />
+           
+            
+            <input type="text" asp-for="UserId" name="UserId" value="@Model.UserId" hidden />
+
+
+            <input type="text" asp-for="TripsID" name="TripsId" value="@Model.TripsID" hidden />
+
+            @if (Model.A1 != 0)
+            {
+                <input type="checkbox" name="A1" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden checked readonly />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">A1</label>
+            }
+             
+            else
+            {
+                <input type="checkbox" name="A1" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A1</label>
+
+
+            }
+
+            @if (Model.A2 != 0)
+            {
+                <input type="checkbox" name="A2" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden checked readonly />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">A2</label>
+            }
+            else
+            {
+
+                <input type="checkbox" name="A2" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A2</label>
+
+            }
+
+            @if (Model.A3 != 0)
+            {
+                <input type="checkbox" name="A3" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden checked readonly />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">A3</label>
+            }
+            else
+            {
+                // count = count + 100;
+                <input type="checkbox" name="A3" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A3</label>
+            }
+            <br />
+            @if (Model.A4 != 0)
+            {
+                <input type="checkbox" name="A4" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden checked readonly />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">A4</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A4" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A4</label>
+            }
+
+            @if (Model.A5 != 0)
+            {
+                <input type="checkbox" name="A5" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden checked readonly />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">A5</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A5" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A5</label>
+            }
+
+            @if (Model.A6 != 0)
+            {
+                <input type="checkbox" name="A6" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">A6</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A6" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A6</label>
+            }
+            <br />
+            @if (Model.A7 != 0)
+            {
+                <input type="checkbox" name="A7" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">A7</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A7" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A7</label>
+            }
+
+            @if (Model.A8 != 0)
+            {
+                <input type="checkbox" name="A8" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">A8</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A8" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A8</label>
+            }
+
+            @if (Model.A9 != 0)
+            {
+                <input type="checkbox" name="A9" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">A9</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A9" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A9</label>
+            }
+            <br />
+            @if (Model.A10 != 0)
+            {
+                <input type="checkbox" name="A10" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                 <label class="text-danger">A10</label>
+            }
+            else
+            {
+                <input type="checkbox" name="A10" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">A10</label>
+            }
+
+            @if (Model.B1 != 0)
+            {
+                <input type="checkbox" name="B1" style="margin-left:61px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:61px" />
+                <label class="text-danger">B1</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B1" style="margin-left:61px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B1</label>
+            }
+            @if (Model.B2 != 0)
+            {
+                <input type="checkbox" name="B2" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">B2</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B2" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B2</label>
+            }
+            <br />
+            @if (Model.B3 != 0)
+            {
+                <input type="checkbox" name="B3" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">B3</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B3" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B3</label>
+            }
+            @if (Model.B4 != 0)
+            {
+                <input type="checkbox" name="B4" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">B4</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B4" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B4</label>
+            }
+            @if (Model.B5 != 0)
+            {
+                <input type="checkbox" name="B5" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">B5</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B5" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B5</label>
+            }
+            <br />
+            @if (Model.B6 != 0)
+            {
+                <input type="checkbox" name="B6" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">B6</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B6" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B6</label>
+            }
+            @if (Model.B7 != 0)
+            {
+                <input type="checkbox" name="B7" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">B7</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B7" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B7</label>
+            }
+            @if (Model.B8 != 0)
+            {
+                <input type="checkbox" name="B8" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">B8</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B8" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B8</label>
+            }
+            <br />
+            @if (Model.B9 != 0)
+            {
+                <input type="checkbox" name="B9" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">B9</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B9" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B9</label>
+            }
+            @if (Model.B10 != 0)
+            {
+                <input type="checkbox" name="B10" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">B10</label>
+            }
+            else
+            {
+                <input type="checkbox" name="B10" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">B10</label>
+            }
+
+
+            @if (Model.C1 != 0)
+            {
+                <input type="checkbox" name="C1" style="margin-left:12px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:12px" />
+                <label class="text-danger">C1</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C1" style="margin-left:12px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C1</label>
+            }
+            <br />
+            @if (Model.C2 != 0)
+            {
+                <input type="checkbox" name="C2" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">C2</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C2" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C2</label>
+            }
+            @if (Model.C3 != 0)
+            {
+                <input type="checkbox" name="C3" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">C3</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C3" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C3</label>
+            }
+            @if (Model.C4 != 0)
+            {
+                <input type="checkbox" name="C4" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">C4</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C4" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C4</label>
+            }
+            <br />
+            @if (Model.C5 != 0)
+            {
+                <input type="checkbox" name="C5" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">C5</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C5" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C5</label>
+            }
+            @if (Model.C6 != 0)
+            {
+                <input type="checkbox" name="C6" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">C6</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C6" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C6</label>
+            }
+            @if (Model.C7 != 0)
+            {
+                <input type="checkbox" name="C7" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">C7</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C7" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C7</label>
+            }
+            <br />
+            @if (Model.C8 != 0)
+            {
+                <input type="checkbox" name="C8" style="margin-left:30px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:30px" />
+                <label class="text-danger">C8</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C8" style="margin-left:30px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C8</label>
+            }
+            @if (Model.C9 != 0)
+            {
+                <input type="checkbox" name="C9" style="margin-left:70px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:70px" />
+                <label class="text-danger">C9</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C9" style="margin-left:70px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C9</label>
+            }
+            @if (Model.C10 != 0)
+            {
+                <input type="checkbox" name="C10" style="margin-left:20px" value="@Model.Trips.Route.Price" hidden readonly checked />
+                <input type="checkbox" disabled checked style="margin-left:20px" />
+                <label class="text-danger">C10</label>
+            }
+            else
+            {
+                <input type="checkbox" name="C10" style="margin-left:20px" value="@Model.Trips.Route.Price" onClick="test(this);" class="limitThree" />
+                <label class="text-success">C10</label>
+            }
+            <div style="margin-left:70px">
+                <label class="btn btn-warning" style="margin-top:20px;margin-left:-15px"> Total Amount : <span id="Totalcost"></span></label>
+            </div>
+
+
+            <button class="btn btn-primary" type="submit" style="width: 270px;margin-left: 675px;margin-top: -10px;">Proceed to pay</button>
+
+        </form>
+    </div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    var total = 0;
+    function test(item) {
+        if (item.checked) {
+            total += parseInt(item.value);
+        } else {
+            total -= parseInt(item.value);
+        }
+        //alert(total);
+        document.getElementById('Totalcost').innerHTML = total + " /-";
+    }
+    //Limit to FOUR
+    $('.limitThree').on('change', function () {
+        var noChecked = 0;
+        $.each($('.limitThree'), function () {
+            if ($(this).is(':checked')) {
+                noChecked++;
+            }
+        });
+        if (noChecked >= 4) {
+            $.each($('.limitThree'), function () {
+                if ($(this).not(':checked').length == 1) {
+                    $(this).attr('disabled', 'disabled');
+                }
+            });
+        } else {
+            $('.limitThree').removeAttr('disabled');
+        };
+    });
+
+</script>
+
+<div style="border: 1px solid black;float:right;  margin-left: 70px;width: 300px;margin-right: 80px;">
+    <div style="margin-right: -100px;">
+        <h3 class="text-center" style="margin-right: 90px; margin-bottom: 30px;margin-top: 10px;"><i class="fa fa-shopping-bag"></i> Order Details</h3>
+        <div class="form-group col-md-9">
+            @Html.Label("Email")
+            <input type="text" name="Email" value="@ViewBag.UserName" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("Bus Name")
+            <input type="text" name="BusName" value="@Model.Trips.BusDetails.BusName" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("From Location")
+            <input type="text" name="FromLocation" value="@Model.Trips.Route.FromLocation" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("To Location")
+            <input type="text" name="ToLocation" value="@Model.Trips.Route.ToLocation" class="form-control" readonly="readonly" />
+        </div>
+        <div class="form-group col-md-9">
+            @Html.Label("Journey Date")
+            <input type="text" name="JourneyDate" value="@Model.Trips.JourneyDate" class="form-control" readonly="readonly" />
+        </div>
+       
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

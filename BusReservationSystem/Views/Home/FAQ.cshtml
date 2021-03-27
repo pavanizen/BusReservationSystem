@@ -1,0 +1,79 @@
+﻿
+<style>
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: white;
+    }
+</style>
+<body>
+
+    <h1 class="text-center">Frequently Asked Questions</h1>
+
+    <div class="jumbotron">
+
+
+        <button class="collapsible">Q. Which cities are we operational in?<i class="fa fa-angle-double-down" style="float:right"></i></button>
+        <div class="content">
+            <p>Ans: We are currently operational in Pune, Hyderabad and Bangalore.</p>
+        </div>
+        <button class="collapsible"> Q. Whom do I contact if I have additional questions?<i class="fa fa-angle-double-down" style="float:right"></i></button>
+        <div class="content">
+            <p>Ans: You can write to us at email ids provided in the Contact page.</p>
+        </div>
+        <button class="collapsible"> Q. Benefits of booking through PackYourBags?<i class="fa fa-angle-double-down" style="float:right"></i></button>
+        <div class="content">
+            <p>
+                Ans.
+                <ul>
+                    <li>Simple and easy process.</li>
+                    <li>User-friendly website.</li>
+                    <li>You can book tickets from the comfort of your home.</li>
+                    <li>No additional cost other than price of seats booked. </li>
+                    <li>Avoid standing in long queues at offline bus ticket counters. </li>
+                    <li>Avoid travel agents. </li>
+                    <li>Open 24 /7 for reservation. </li>
+                    <li>Each and every transaction is simple, safe and secure. </li>
+                    <li>You can save alot of time.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>

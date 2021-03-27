@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Bus.DomainModels.Models.Trip>
+@{
+
+    ViewData["Title"] = "Index";
+}
+
+
+<h1 class="text-center"><i class="fa fa-calendar-alt" aria-hidden="true"></i>Schedule</h1>
+<body style="
+    background-image:url('/images/pattern.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center">
+
+
+
+</body>
+<div class="text-center">
+    <div class="text-center">
+
+        <a asp-controller="Travel" class="btn btn-info text-white"><i class="fa fa-bus"></i>Bus</a>
+        <a asp-controller="Routes" class="btn btn-info text-white"><i class="fa fa-road"></i>Route</a>
+        <a asp-controller="Schedule" class="btn btn-info text-white"><i class="fas fa-calendar-alt"></i>Schedule</a>
+
+    </div>
+    <br />
+    <br />
+    <br />
+
+
+
+        
+        @*<p>
+                Learn about <a href="https://docs.microsoft.com/aspnet/core">
+                    building Web apps with ASP.NET
+                    Core
+                </a>.
+            </p>*@
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <th>TripId</th>
+                    <th>RouteId</th>
+                    <th>BusId</th>
+                    <th>JourneyDate</th>
+                    <th>AvailableSeats</th>
+                    <th>
+                        <a asp-action="Create" asp-controller="Schedule" class="btn btn-success text-white"> <i class="fas fa-angle-double-right"></i>Add New Trip</a>
+                    </th>
+
+                </tr>
+                @foreach (var busData in Model)
+                {
+            <tr>
+
+                @*<td>@busData.ID</td>
+        <td><a asp-action="Details" asp-controller="Travel" asp-route-id="@busData.ID">@busData.BusName</a></td>*@
+
+                @*<td>@busData.TripID</td>*@
+                <td><a asp-action="Details" asp-controller="Schedule" asp-route-id="@busData.TripID">S @busData.TripID</a></td>
+                <td>R @busData.RouteID</td>
+                <td>B @busData.BusID</td>
+                <td>@busData.JourneyDate</td>
+                <td>@busData.AvailableSeats</td>
+
+
+                <td><a asp-action="Edit" asp-controller="Schedule" asp-route-id="@busData.TripID" class="btn btn-info text-white"><i class="fa fa-pencil-alt"></i></a>
+                <a asp-action="DeleteTrip" asp-controller="Schedule" asp-route-id="@busData.TripID" class="btn btn-danger text-white"><i class="fa fa-trash"></i></a></td>
+
+            </tr>
+                }
+                @*@Paging@*@
+                <tr>
+                    <td colspan="9">
+                        @{ int prevPageNo = ViewBag.PageNo - 1;
+                            if (prevPageNo <= 0)
+                            {
+                                prevPageNo = 1;
+                            }
+                            int nextPageNo = ViewBag.PageNo + 1;
+                            if (nextPageNo > ViewBag.NoOfPages)
+                            {
+                                nextPageNo = ViewBag.NoOfPages;
+                            } }
+                        <ul class="pagination justify-content-end">
+                            @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                            {
+                                if (i + 1 == ViewBag.PageNo)
+                                {
+                                    <li class="page-item active">
+                                        <a class="page-link" href="/Schedule/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                                    </li>
+ }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Schedule/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                                    </li>
+}
+                            }
+                        </ul>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>

@@ -1,0 +1,392 @@
+﻿@model Bus.DomainModels.Models.Trip
+@{ ViewData["Title"] = "ViewSeats"; }
+
+<style>
+
+    .h1 {
+        width: 60%;
+        margin: 100px auto 35px auto;
+    }
+
+    .fuselage {
+        border-right: 5px solid #d8d8d8;
+        border-left: 5px solid #d8d8d8;
+    }
+
+    ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .seats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .seat {
+        display: flex;
+        flex: 0 0 14.28571428571429%;
+        padding: 5px;
+        position: relative;
+        margin-right: 14.28571428571429%;
+        margin-left: 30px;
+    }
+    /* .seat label {
+            display: block;
+            position: relative;
+            width: 28px;
+            margin-left: 39px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.5rem;
+            padding: 4px 0;
+            background: #F42536;
+            border-radius: 5px;
+            animation-duration: 300ms;
+            animation-fill-mode: both;
+        }*/
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+    }
+
+        input[type="checkbox"]:before {
+            color: blue;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: red;
+        }
+</style>
+
+
+
+<div class="plane">
+    <div class="float-left">
+        <form id="devel-generate-content-form">
+            <div class="cockpit">
+                <h1>Please select a seat</h1>
+            </div>
+
+            <ol class="cabin fuselage">
+                <li class="row row--1">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="1A" value="100" onClick="test(this);" />
+                            <label for="1A">1A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="1B" value="100" onClick="test(this);" />
+                            <label for="1B">1B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="1C" value="100" onClick="test(this);" />
+                            <label for="1C">1C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--2">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="2A" value="100" onClick="test(this);" />
+                            <label for="2A">2A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="2B" value="100" onClick="test(this);" />
+                            <label for="2B">2B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="2C" value="100" onClick="test(this);" />
+                            <label for="2C">2C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--3">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="3A" value="100" onClick="test(this);" />
+                            <label for="3A">3A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="3B" value="100" onClick="test(this);" />
+                            <label for="3B">3B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="3C" value="100" onClick="test(this);" />
+                            <label for="3C">3C</label>
+                        </li>
+                    </ol>
+                </li>
+                <li class="row row--4">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="4A" value="100" onClick="test(this);" />
+                            <label for="4A">4A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="4B" value="100" onClick="test(this);" />
+                            <label for="4B">4B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="4C" value="100" onClick="test(this);" />
+                            <label for="4C">4C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--5">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="5A" value="100" onClick="test(this);" />
+                            <label for="5A">5A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="5B" value="100" onClick="test(this);" />
+                            <label for="5B">5B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="5C" value="100" onClick="test(this);" />
+                            <label for="5C">5C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--6">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="6A" value="100" onClick="test(this);" />
+                            <label for="6A">6A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="6B" value="100" onClick="test(this);" />
+                            <label for="6B">6B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="6C" value="100" onClick="test(this);" />
+                            <label for="6C">6C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--7">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="7A" value="100" onClick="test(this);" />
+                            <label for="7A">7A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="7B" value="100" onClick="test(this);" />
+                            <label for="7B">7B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="7C" value="100" onClick="test(this);" />
+                            <label for="7C">7C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--8">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="8A" value="100" onClick="test(this);" />
+                            <label for="8A">8A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="8B" value="100" onClick="test(this);" />
+                            <label for="8B">8B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="8C" value="100" onClick="test(this);" />
+                            <label for="8C">8C</label>
+                        </li>
+                    </ol>
+                </li>
+                <li class="row row--9">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="9A" value="100" onClick="test(this);" />
+                            <label for="9A">9A</label>
+                        </li>
+                        <li class="seat" style="margin-left:25px">
+                            <input type="checkbox" id="9B" value="100" onClick="test(this);" />
+                            <label for="9B">9B</label>
+                        </li>
+                        <li class="seat">
+                            <input type="checkbox" id="9C" value="100" onClick="test(this);" />
+                            <label for="9C">9C</label>
+                        </li>
+
+                    </ol>
+                </li>
+                <li class="row row--10">
+                    <ol class="seats" type="A">
+                        <li class="seat">
+                            <input type="checkbox" id="10A" value="100" onClick="test(this);" />
+                            <label for="10A">10A</label>
+                        </li>
+                        <li class="seat" style="margin-left:17px">
+                            <input type="checkbox" id="10B" value="100" onClick="test(this);" />
+                            <label for="10B">10B</label>
+                        </li>
+                        <li class="seat" style="margin-left:-7px">
+                            <input type="checkbox" id="10C" value="100" onClick="test(this);" />
+                            <label for="10C">10C</label>
+                        </li>
+
+                    </ol>
+                </li>
+
+            </ol>
+            <div class="exit exit--back fuselage">
+                <div class="count-checkboxes-wrapper">
+                    <span id="count-checked-checkboxes">0</span> checked
+                </div>
+
+                Total Amount : <span id="Totalcost"> </span>
+            </div>
+
+            @*@<button id="myBtn">Add to Cart</button>@*@
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p> Total Amount : <span id="Totalcost"> </span></p>
+                </div>
+
+            </div>
+        </form>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+        <script>
+    $(document).ready(function () {
+
+                var $checkboxes = $('#devel-generate-content-form input[type="checkbox"]');
+
+                $checkboxes.change(function () {
+                    var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+                    $('#count-checked-checkboxes').text(countCheckedCheckboxes);
+
+                });
+            });
+
+
+            var total = 0;
+
+            function test(item) {
+                if (item.checked) {
+                    total += parseInt(item.value);
+                } else {
+                    total -= parseInt(item.value);
+                }
+                //alert(total);
+                document.getElementById('Totalcost').innerHTML = total + " /-";
+            }
+
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }</script>
+    </div>
+
+
+    <div class="float-right">
+        <div>
+            <div class="form-group col-md-9">
+                @Html.Label("Email")
+                <input type="text" name="Email" value="@ViewBag.UserName" class="form-control" readonly="readonly" />
+            </div>
+
+            <div class="form-group col-md-9">
+                @Html.LabelFor(m => m.BusDetails.BusName)
+                <input type="text" value="@Model.BusDetails.BusName" class="form-control" readonly="readonly" />
+            </div>
+
+            <div class="form-group col-md-9">
+                @Html.LabelFor(m => m.Route.FromLocation)
+                <input type="text" value="@Model.Route.FromLocation" class="form-control" readonly="readonly" />
+            </div>
+
+            <div class="form-group col-md-9">
+                @Html.LabelFor(m => m.Route.ToLocation)
+                <input type="text" value="@Model.Route.ToLocation" class="form-control" readonly="readonly" />
+            </div>
+
+            <div class="form-group col-md-9">
+                @Html.LabelFor(m => m.JourneyDate)
+                <input type="text" value="@Model.JourneyDate" class="form-control" readonly="readonly" />
+            </div>
+        </div>
+    </div>
+</div>

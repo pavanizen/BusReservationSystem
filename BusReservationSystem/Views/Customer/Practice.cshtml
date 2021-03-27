@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Practice";
+}
+
+<h1>Practice</h1>
+
+<input type="button" id="del_event" name="del_event" value="Delete Event" disabled="disabled" />
+
+
+
+<input type='checkbox' name='check' id='check' onclick='checkSubmit(this, ' del_event')' value='y' />
+
+<script type="text/javascript">
+    function checkSubmit(ele, id) {
+        x = document.getElementById(id);
+        if (ele.checked == true) x.disabled = false;
+        else x.disabled = true;
+    }
+</script>

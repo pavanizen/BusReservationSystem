@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Bus.DomainModels.Models.Route>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1 class="text-center"><i class="fa fa-route" aria-hidden="true"></i>Route</h1>
+<body style="
+    background-image:url('/images/pattern.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center">
+
+
+
+</body>
+<div class="text-center">
+    <div class="text-center">
+
+        <a asp-controller="Travel" class="btn btn-info text-white"><i class="fa fa-bus"></i>Bus</a>
+        <a asp-controller="Routes" class="btn btn-info text-white"><i class="fa fa-road"></i>Route</a>
+        <a asp-controller="Schedule" class="btn btn-info text-white"><i class="fas fa-calendar-alt"></i>Schedule</a>
+
+    </div>
+    <br />
+    <br />
+    <br />
+    
+        @*<a asp-action="Create" asp-controller="Routes" class="btn btn-outline-info">Add New Route</a>*@
+        @*<h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <th>RouteId</th>
+                    <th>FromLocation</th>
+                    <th>ToLocation</th>
+                    <th>Price</th>
+                    <th><a asp-action="Create" asp-controller="Routes" class="btn btn-success text-white"><i class="fas fa-angle-double-right"></i>Add New Route</a></th>
+                </tr>
+                @foreach (var busdata in Model)
+                {
+                    <tr>
+                        <td><a asp-action="Details" asp-controller="Routes" asp-route-id="@busdata.RouteId">R @busdata.RouteId</a></td>
+                        @*<td>@busdata.BusId</td>*@
+                        <td>@busdata.FromLocation</td>
+                        <td>@busdata.ToLocation</td>
+                        <td>@busdata.Price.ToString("c")</td>
+
+                        <td><a asp-action="Edit" asp-controller="Routes" asp-route-id="@busdata.RouteId" class="btn btn-info text-white"><i class="fa fa-pencil-alt"></i></a>
+                        <a asp-action="DeleteRoute" asp-controller="Routes" asp-route-id="@busdata.RouteId" class="btn btn-danger text-white"><i class="fa fa-trash"></i></a></td>
+
+                    </tr>
+                }
+                @*@Paging@*@
+                <tr>
+                    <td colspan="9">
+                        @{ int prevPageNo = ViewBag.PageNo - 1;
+                            if (prevPageNo <= 0)
+                            {
+                                prevPageNo = 1;
+                            }
+                            int nextPageNo = ViewBag.PageNo + 1;
+                            if (nextPageNo > ViewBag.NoOfPages)
+                            {
+                                nextPageNo = ViewBag.NoOfPages;
+                            }
+                        }
+                        <ul class="pagination justify-content-end">
+                            @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                            {
+                                if (i + 1 == ViewBag.PageNo)
+                                {
+                                    <li class="page-item active">
+                                        <a class="page-link" href="/Routes/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                                    </li>
+ }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Routes/Index?PageNo=@(i + 1)">@(i + 1)</a>
+                                    </li>
+}
+                            }
+                        </ul>
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </div>
+    </div>

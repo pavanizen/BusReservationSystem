@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Bus.DomainModels.Models.Trip>
+@{
+    ViewData["Title"] = "GetByName";
+}
+
+<body style="
+    background-image: url('https://tse1.mm.bing.net/th?id=OIP.34MY20FWjl7BI2jBUtnk2AHaFj&pid=Api&P=0&w=227&h=171');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;">
+</body>
+<h1>JourneyDetails</h1>
+@*<a href="/Customer/GetByName?name=Hyderabad" class="btn btn-primary">Hyderabad</a>
+    <a href="/Customer/GetByName?name=Pune" class="btn btn-primary">Pune</a>
+    <a href="/Customer/GetByName?name=Bangalore" class="btn btn-primary">Banglore</a>*@
+<div >
+    <div class="container table-bordered" style="border-color:black;">
+
+
+        <table class="table">
+
+            <tr style="text-align:center">
+                <th>Bus Name</th>
+
+                <th>Available Seats</th>
+                <th>To Location</th>
+                <th>Journey Date</th>
+
+                <th>Price</th>
+                @*<th>Department Name</th>*@
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    @*<td>
+                            <img src="@Url.Content(item.Image)" style="width:100px; height:100px" />
+
+
+                        </td>*@
+                    <td style="text-align:center">
+                        <h4 style="color:darkblue">
+                            @Html.DisplayFor(m => item.BusDetails.BusName)
+                        </h4>
+                        @Html.DisplayFor(m => item.BusDetails.Category)
+                    </td>
+
+
+
+                    <td style="text-align:center">
+                        @Html.DisplayFor(m => item.AvailableSeats)
+
+                    </td>
+                    <td style="text-align:center">
+                        @Html.DisplayFor(m => item.Route.ToLocation)
+
+                    </td>
+
+                    <td style="text-align:center">
+                        @Html.DisplayFor(m => item.JourneyDate)
+
+                    </td>
+
+                    <td style="text-align:center">
+                        <h4 style="color:darkred">
+                            @*@Html.DisplayFor(m => item.Route.Price)*@
+                            @string.Format("{0:C}", item.Route.Price)
+                        </h4>
+
+                        @Html.ActionLink("ViewSeats", "BookedSeatsData", "Customer", new { id = item.RouteID }, new { @class = "btn btn-primary" })
+                       
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+
+            }
+
+        </table>
+
+    </div>
+</div>
+@*@Html.ActionLink("Back", "Index", "Customer", new { @class = "btn btn-primary" })*@
+<a class="btn btn-warning" style="float: right; margin-top: -41px; margin-right:10px"asp-action="Index" asp-controller="Customer">Back</a>
+
+
